@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Graph;
 using Microsoft.Graph.Models;
 using SalesWebMVC.Data;
+using SalesWebMVC.Services;
 using System.Configuration;
 
 var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<SalesWebMVCContext>(options =>
         ServerVersion.Parse("8.0.34-mysql")));
 
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
 
 var app = builder.Build();
 
