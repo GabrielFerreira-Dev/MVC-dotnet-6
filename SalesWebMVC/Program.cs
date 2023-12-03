@@ -1,10 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Graph;
-using Microsoft.Graph.Models;
 using SalesWebMVC.Data;
 using SalesWebMVC.Services;
-using System.Configuration;
 
 var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
 

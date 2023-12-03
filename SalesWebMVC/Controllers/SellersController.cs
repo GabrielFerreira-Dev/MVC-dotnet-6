@@ -2,6 +2,7 @@
 using SalesWebMVC.Models;
 using SalesWebMVC.Models.ViewModels;
 using SalesWebMVC.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMVC.Controllers {
     public class SellersController : Controller {
@@ -33,9 +34,9 @@ namespace SalesWebMVC.Controllers {
         }
 
         public IActionResult Delete(int? id) {
-            if(id == null) { return NotFound(); }
+            if (id == null) { return NotFound(); }
             var obj = _sellerService.FindById(id.Value);
-            if(obj == null) { return NotFound(); }
+            if (obj == null) { return NotFound(); }
             return View(obj);
         }
 
@@ -45,5 +46,14 @@ namespace SalesWebMVC.Controllers {
             _sellerService.Remove(id);
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Details(int? id) {
+            if (id == null) { return NotFound(); }
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null) { return NotFound(); }
+            return View(obj);
+        }
+
+
     }
 }
