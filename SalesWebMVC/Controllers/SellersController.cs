@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SalesWebMVC.Models.ViewModels;
 using SalesWebMVC.Models;
 using SalesWebMVC.Services;
+using SalesWebMVC.Services.Exceptions;
 
 namespace SalesWebMvc.Controllers {
     public class SellersController : Controller {
@@ -56,7 +57,7 @@ namespace SalesWebMvc.Controllers {
             try {
                 await _sellerService.RemoveAsync(id);
                 return RedirectToAction(nameof(Index));
-            } catch (ApplicationException e) {
+            } catch (IntegrityException e) {
                 return RedirectToAction(nameof(Error), new { message = e.Message });
             }
         }
