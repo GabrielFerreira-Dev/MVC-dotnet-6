@@ -1,4 +1,4 @@
-# Projeto MVC em .NET 6.0
+# Projeto MVC em .NET
 
 Este projeto tem como objetivo praticar o padrão MVC (Model-View-Controller) usando o framework .NET 6.0. O trabalho inclui a criação de um esquema para lidar com Departamentos, Vendedores e Vendas, estabelecendo relações entre as classes e usando o método Code-First para interagir com um banco de dados MySQL.
 
