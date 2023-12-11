@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using SalesWebMVC.Data;
 using SalesWebMVC.Models;
 
@@ -25,7 +26,7 @@ namespace SalesWebMVC.Services {
                             .ToListAsync();
         }
 
-        public async Task<List<IGrouping<Department,SalesRecord>>> FindByDateGroupAsync(DateTime? minDate, DateTime? maxDate) {
+        public async Task<List<IGrouping<Department, SalesRecord>>> FindByDateGroupAsync(DateTime? minDate, DateTime? maxDate) {
             var result = from obj in _context.SalesRecord select obj;
             if (minDate.HasValue) {
                 result = result.Where(x => x.Date >= minDate.Value);
@@ -39,6 +40,11 @@ namespace SalesWebMVC.Services {
                             .OrderByDescending(x => x.Date)
                             .GroupBy(x => x.Seller.Department)
                             .ToListAsync();
+        }
+
+        public async Task InsertAsync(SalesRecord sales) {
+            _context.Add(sales);
+            await _context.SaveChangesAsync();
         }
     }
 }
